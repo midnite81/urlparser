@@ -12,7 +12,7 @@
     "autoload": {
         "psr-4": {
             "Midnite81\\UrlParser\\": "src/",
-            "Midnite81\\UrlParser\\Tests": "tests/"
+            "Midnite81\\UrlParser\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "stable",

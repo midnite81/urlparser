@@ -61,6 +61,27 @@ class Url
         return null;
     }
 
+    /**
+     * Get URL segments
+     *
+     * @return array
+     */
+    public function segments()
+    {
+        return explode('/', $this->get('path'));
+    }
+
+    /**
+     * Get a segment of the url (path)
+     *
+     * @param int $key
+     * @return mixed|null
+     */
+    public function segment(int $key): ?string
+    {
+        return ! empty($this->segments()[$key-1]) ? $this->segments()[$key-1] : null;
+    }
+
 
     /**
      * Throw exception if parsed url is Malformed
