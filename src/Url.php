@@ -241,7 +241,7 @@ class Url
                 $split = explode($secondDelimiter, $arrayItem);
                 $key = ! empty($split[0]) ? $split[0] : '';
                 $value = ! empty($split[1]) ? $split[1] : '';
-                $newArray[$key] = $split[$value];
+                $newArray[$key] = $value;
             }
         }
 
