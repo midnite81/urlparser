@@ -67,10 +67,14 @@ trait Getters
     /**
      * Get the query
      *
+     * @param bool $includeQuestionMark
      * @return string|null
      */
-    public function query()
+    public function query(bool $includeQuestionMark = false)
     {
+        if ($includeQuestionMark) {
+            return '?' . $this->get('query');
+        }
         return $this->get('query');
     }
 
@@ -78,10 +82,14 @@ trait Getters
     /**
      * Get the query
      *
+     * @param bool $includeHash
      * @return string|null
      */
-    public function fragment()
+    public function fragment(bool $includeHash = false)
     {
+        if ($includeHash) {
+            return '#' . $this->get('fragment');
+        }
         return $this->get('fragment');
     }
 }

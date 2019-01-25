@@ -1,6 +1,6 @@
 {
     "name": "midnite81/urlparser",
-    "description": "A PHP 7+ package to parse urls",
+    "description": "A PHP 7.1+ package to parse urls",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -9,12 +9,19 @@
             "email": "webdev@centralblue.co.uk"
         }
     ],
+    "require": {
+        "php": ">=7.1",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^4.2",
+        "illuminate/support": "^5.7"
+    },
     "autoload": {
         "psr-4": {
             "Midnite81\\UrlParser\\": "src/",
             "Midnite81\\UrlParser\\Tests\\": "tests/"
         }
     },
-    "minimum-stability": "stable",
-    "require": {}
+    "minimum-stability": "stable"
 }
