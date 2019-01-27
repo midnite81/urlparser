@@ -6,8 +6,9 @@ if (! function_exists('urlparse')) {
      *
      * @param string $url
      * @return \Midnite81\UrlParser\Url
+     * @throws \Midnite81\UrlParser\Exceptions\MalformedUrlException
      */
-    function urlparse(string $url)
+    function urlparse(string $url): \Midnite81\UrlParser\Url
     {
         return new \Midnite81\UrlParser\Url($url);
     }

@@ -20,7 +20,7 @@ class Url
      * Url constructor.
      *
      * @param $url
-     * @throws \Exception
+     * @throws MalformedUrlException
      */
     public function __construct(string $url)
     {
@@ -33,7 +33,7 @@ class Url
      *
      * @param string $url
      * @return Url
-     * @throws \Exception
+     * @throws MalformedUrlException
      */
     public static function create(string $url): Url
     {
