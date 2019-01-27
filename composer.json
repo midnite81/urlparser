@@ -23,7 +23,10 @@
         "psr-4": {
             "Midnite81\\UrlParser\\": "src/",
             "Midnite81\\UrlParser\\Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "helpers.php"
+        ]
     },
     "minimum-stability": "stable"
 }
