@@ -64,6 +64,29 @@ class UrlTest extends AbstractBaseTestCase
         $this->assertEquals('style=blue&type=brick', $this->url->get('query'));
         $this->assertEquals('ajax=1', $this->url->get('fragment'));
     }
+
+    /**
+     * @test
+     */
+    public function it_can_retrieve_each_part_using_named_get_functions()
+    {
+        $this->assertEquals('https', $this->url->scheme());
+        $this->assertEquals('www.example.com', $this->url->host());
+        $this->assertEquals('80', $this->url->port());
+        $this->assertEquals('steve', $this->url->user());
+        $this->assertEquals('password', $this->url->pass());
+        $this->assertEquals('/green/houses', $this->url->path());
+        $this->assertEquals('style=blue&type=brick', $this->url->query());
+        $this->assertEquals('ajax=1', $this->url->fragment());
+    }
+
+    /**
+     * @test
+     */
+    public function it_returns_null_if_a_get_doesnt_exist()
+    {
+        $this->assertNull($this->url->get('something'));
+    }
     
     /** 
      * @test 
@@ -176,6 +199,14 @@ class UrlTest extends AbstractBaseTestCase
     /**
      * @test
      */
+    public function it_returns_null_if_a_query_parameter_is_not_found()
+    {
+        $this->assertNull($this->url->getQueryValue('something'));
+    }
+
+    /**
+     * @test
+     */
     public function it_returns_the_correct_fragment_array_values()
     {
         $fragment = $this->url->fragmentArray();
@@ -191,6 +222,14 @@ class UrlTest extends AbstractBaseTestCase
     {
         $this->assertEquals('blue', $this->url->getQueryValue('style'));
         $this->assertEquals('brick', $this->url->getQueryValue('type'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_gets_null_on_unfound_query_string()
+    {
+        $this->assertNull($this->url->getHashValue('something'));
     }
 
     /**
