@@ -9,7 +9,7 @@ trait Getters
      *
      * @return string|null
      */
-    public function scheme()
+    public function scheme(): ?string
     {
         return $this->get('scheme');
     }
@@ -19,7 +19,7 @@ trait Getters
      *
      * @return string|null
      */
-    public function host()
+    public function host(): ?string
     {
         return $this->get('host');
     }
@@ -29,7 +29,7 @@ trait Getters
      *
      * @return string|null
      */
-    public function port()
+    public function port(): ?string
     {
         return $this->get('port');
     }
@@ -39,7 +39,7 @@ trait Getters
      *
      * @return string|null
      */
-    public function user()
+    public function user(): ?string
     {
         return $this->get('user');
     }
@@ -49,7 +49,7 @@ trait Getters
      *
      * @return string|null
      */
-    public function pass()
+    public function pass(): ?string
     {
         return $this->get('pass');
     }
@@ -59,9 +59,19 @@ trait Getters
      *
      * @return string|null
      */
-    public function path()
+    public function path(): ?string
     {
         return $this->get('path');
+    }
+
+    /**
+     * Returns the 'filename' part of the path
+     *
+     * @return string|null
+     */
+    public function fileName(): ?string
+    {
+        return basename($this->get('path'));
     }
 
     /**
@@ -70,7 +80,7 @@ trait Getters
      * @param bool $includeQuestionMark
      * @return string|null
      */
-    public function query(bool $includeQuestionMark = false)
+    public function query(bool $includeQuestionMark = false): ?string
     {
         if ($includeQuestionMark) {
             return '?' . $this->get('query');
@@ -85,7 +95,7 @@ trait Getters
      * @param bool $includeHash
      * @return string|null
      */
-    public function fragment(bool $includeHash = false)
+    public function fragment(bool $includeHash = false): ?string
     {
         if ($includeHash) {
             return '#' . $this->get('fragment');

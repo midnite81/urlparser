@@ -29,6 +29,7 @@ class UrlTest extends AbstractBaseTestCase
         $this->assertArrayHasKey('user', $all);
         $this->assertArrayHasKey('pass', $all);
         $this->assertArrayHasKey('path', $all);
+        $this->assertArrayHasKey('fileName', $all);
         $this->assertArrayHasKey('query', $all);
         $this->assertArrayHasKey('fragment', $all);
     }
@@ -61,6 +62,7 @@ class UrlTest extends AbstractBaseTestCase
         $this->assertEquals('steve', $this->url->get('user'));
         $this->assertEquals('password', $this->url->get('pass'));
         $this->assertEquals('/green/houses', $this->url->get('path'));
+        $this->assertEquals('houses', $this->url->get('fileName'));
         $this->assertEquals('style=blue&type=brick', $this->url->get('query'));
         $this->assertEquals('ajax=1', $this->url->get('fragment'));
     }
@@ -76,6 +78,7 @@ class UrlTest extends AbstractBaseTestCase
         $this->assertEquals('steve', $this->url->user());
         $this->assertEquals('password', $this->url->pass());
         $this->assertEquals('/green/houses', $this->url->path());
+        $this->assertEquals('houses', $this->url->fileName());
         $this->assertEquals('style=blue&type=brick', $this->url->query());
         $this->assertEquals('ajax=1', $this->url->fragment());
     }

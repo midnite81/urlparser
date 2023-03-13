@@ -5,6 +5,7 @@ namespace Midnite81\UrlParser;
 use Midnite81\UrlParser\Exceptions\MalformedUrlException;
 use Midnite81\UrlParser\Exceptions\ParameterMustBeGreaterThanZeroException;
 use Midnite81\UrlParser\Traits\Getters;
+use function basename;
 
 class Url
 {
@@ -19,7 +20,8 @@ class Url
     /**
      * Url constructor.
      *
-     * @param $url
+     * @param string $url
+     *
      * @throws MalformedUrlException
      */
     public function __construct(string $url)
@@ -32,10 +34,11 @@ class Url
      * Factory Create
      *
      * @param string $url
+     *
      * @return Url
      * @throws MalformedUrlException
      */
-    public static function create(string $url): Url
+    public static function create(string $url): self
     {
         return new static($url);
     }
@@ -48,14 +51,24 @@ class Url
     public function all(): array
     {
         return [
-            'scheme' => ! empty($this->parsedUrl['scheme']) ? $this->parsedUrl['scheme'] : null,
-            'host' => ! empty($this->parsedUrl['host']) ? $this->parsedUrl['host'] : null,
-            'port' => ! empty($this->parsedUrl['port']) ? $this->parsedUrl['port'] : null,
-            'user' => ! empty($this->parsedUrl['user']) ? $this->parsedUrl['user'] : null,
-            'pass' => ! empty($this->parsedUrl['pass']) ? $this->parsedUrl['pass'] : null,
-            'path' => ! empty($this->parsedUrl['path']) ? $this->parsedUrl['path'] : null,
-            'query' => ! empty($this->parsedUrl['query']) ? $this->parsedUrl['query'] : null,
-            'fragment' => ! empty($this->parsedUrl['fragment']) ? $this->parsedUrl['fragment'] : null,
+            'scheme'   => !empty($this->parsedUrl['scheme'])
+                ? $this->parsedUrl['scheme'] : null,
+            'host'     => !empty($this->parsedUrl['host'])
+                ? $this->parsedUrl['host'] : null,
+            'port'     => !empty($this->parsedUrl['port'])
+                ? $this->parsedUrl['port'] : null,
+            'user'     => !empty($this->parsedUrl['user'])
+                ? $this->parsedUrl['user'] : null,
+            'pass'     => !empty($this->parsedUrl['pass'])
+                ? $this->parsedUrl['pass'] : null,
+            'path'     => !empty($this->parsedUrl['path'])
+                ? $this->parsedUrl['path'] : null,
+            'fileName'     => !empty($this->parsedUrl['path'])
+                ? basename($this->parsedUrl['path']) : null,
+            'query'    => !empty($this->parsedUrl['query'])
+                ? $this->parsedUrl['query'] : null,
+            'fragment' => !empty($this->parsedUrl['fragment'])
+                ? $this->parsedUrl['fragment'] : null,
         ];
     }
 
@@ -73,6 +86,7 @@ class Url
      * Get parameter
      *
      * @param $key
+     *
      * @return string|null
      */
     public function get($key): ?string
@@ -80,6 +94,7 @@ class Url
         if (array_key_exists($key, $this->all())) {
             return $this->all()[$key];
         }
+
         return null;
     }
 
@@ -100,17 +115,20 @@ class Url
      * Get a segment of the url (path)
      *
      * @param int $index
+     *
      * @return mixed|null
      */
     public function segment(int $index): ?string
     {
-        return ! empty($this->segments()[$index - 1]) ? $this->segments()[$index - 1] : null;
+        return !empty($this->segments()[$index - 1]) ? $this->segments()[$index
+        - 1] : null;
     }
 
     /**
      * Return an encoded url
      *
      * @param int $times
+     *
      * @return string
      * @throws ParameterMustBeGreaterThanZeroException
      */
@@ -134,11 +152,15 @@ class Url
      *
      * @param string $delimiter
      * @param string $secondDelimiter
+     *
      * @return array
      */
-    public function queryArray(string $delimiter = '&', string $secondDelimiter = '='): array
-    {
-        return $this->getKeyPairValues($this->query(), $delimiter, $secondDelimiter);
+    public function queryArray(
+        string $delimiter = '&',
+        string $secondDelimiter = '='
+    ): array {
+        return $this->getKeyPairValues($this->query(), $delimiter,
+            $secondDelimiter);
     }
 
     /**
@@ -147,13 +169,20 @@ class Url
      * @param string $key
      * @param string $delimiter
      * @param string $secondDelimiter
+     *
      * @return string|null
      */
-    public function getQueryValue(string $key, string $delimiter = '&', string $secondDelimiter = '='): ?string
-    {
-        if (array_key_exists($key, $this->queryArray($delimiter, $secondDelimiter))) {
+    public function getQueryValue(
+        string $key,
+        string $delimiter = '&',
+        string $secondDelimiter = '='
+    ): ?string {
+        if (array_key_exists($key,
+            $this->queryArray($delimiter, $secondDelimiter))
+        ) {
             return $this->queryArray($delimiter, $secondDelimiter)[$key];
         }
+
         return null;
     }
 
@@ -163,13 +192,20 @@ class Url
      * @param string $key
      * @param string $delimiter
      * @param string $secondDelimiter
+     *
      * @return string|null
      */
-    public function getHashValue(string $key, string $delimiter = '&', string $secondDelimiter = '='): ?string
-    {
-        if (array_key_exists($key, $this->fragmentArray($delimiter, $secondDelimiter))) {
+    public function getHashValue(
+        string $key,
+        string $delimiter = '&',
+        string $secondDelimiter = '='
+    ): ?string {
+        if (array_key_exists($key,
+            $this->fragmentArray($delimiter, $secondDelimiter))
+        ) {
             return $this->fragmentArray($delimiter, $secondDelimiter)[$key];
         }
+
         return null;
     }
 
@@ -178,11 +214,15 @@ class Url
      *
      * @param string $delimiter
      * @param string $secondDelimiter
+     *
      * @return array
      */
-    public function fragmentArray(string $delimiter = '&', string $secondDelimiter = '='): array
-    {
-        return $this->getKeyPairValues($this->fragment(), $delimiter, $secondDelimiter);
+    public function fragmentArray(
+        string $delimiter = '&',
+        string $secondDelimiter = '='
+    ): array {
+        return $this->getKeyPairValues($this->fragment(), $delimiter,
+            $secondDelimiter);
     }
 
     /**
@@ -211,6 +251,7 @@ class Url
      * Throw exception if parsed url is Malformed
      *
      * @param string $url
+     *
      * @throws MalformedUrlException
      */
     protected function parseUrl(string $url): void
@@ -228,19 +269,23 @@ class Url
      * @param string $item
      * @param string $delimiter
      * @param string $secondDelimiter
+     *
      * @return array
      */
-    protected function getKeyPairValues(string $item, string $delimiter = '&', string $secondDelimiter = '=')
-    {
+    protected function getKeyPairValues(
+        string $item,
+        string $delimiter = '&',
+        string $secondDelimiter = '='
+    ): array {
         $newArray = [];
 
         $array = explode($delimiter, $item);
 
-        if ( ! empty($array)) {
+        if (!empty($array)) {
             foreach ($array as $arrayItem) {
-                $split = explode($secondDelimiter, $arrayItem);
-                $key = ! empty($split[0]) ? $split[0] : '';
-                $value = ! empty($split[1]) ? $split[1] : '';
+                $split          = explode($secondDelimiter, $arrayItem);
+                $key            = !empty($split[0]) ? $split[0] : '';
+                $value          = !empty($split[1]) ? $split[1] : '';
                 $newArray[$key] = $value;
             }
         }

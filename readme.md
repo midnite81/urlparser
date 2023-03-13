@@ -22,28 +22,30 @@ include '/path/to/vendor/autoload.php';
 $url = new Midnite81\UrlParser\Url('http://example.com/gallery/houses?hiRes=1#forSale');
 
 echo $url->path(); // returns '/gallery/houses'
+echo $url->fileName() // returns 'houses'
 ```
 
 # Available Methods
 
-|Method|Returns|Description|
-|:-----|:-----|:-----|
-|all()|array|Returns all parts of the URL as an array|
-|json()|json|Returns all parts of the URL as a JSON object|
-|get(string $key)|string or null|Returns the value of a URL part, if it exists|
-|scheme()|string|Returns the scheme e.g. http|
-|host()|string|Returns the host e.g example.com|
-|port()|string|Returns the port e.g. 80|
-|user()|string|Returns the user|
-|pass()|string|Returns the password|
-|path()|string|Returns the path e.g. /gallery/houses|
-|query(bool $includeQuestionMark = false)|string|Returns the querystring e.g. hiRes=1|
-|fragment(bool $includeHash = false)|string|Returns the fragment e.g forSale|
-|segments()|array|Returns each segment of the URL path|
-|segment(int $index)|string or null|Returns the requested segment of the URL Path, if it exists|
-|encode(int $times = 1)|string|Returns the url encoded (urlencode).|
-|doubleEncode()|string|Returns the url double encoded|
-|queryArray()|array|Returns the Query String back in an associative array|
-|fragmentArray()|array|Returns the Fragments back in an associative array|
-|getQueryValue(string $key)|string or null|Returns the value of the query string key if it exists|
-|getHashValue(string $key)|string or null|Returns the value of the fragment/hash key if it exists|
+| Method                                   | Returns        | Description                                                 |
+|:-----------------------------------------|:---------------|:------------------------------------------------------------|
+| all()                                    | array          | Returns all parts of the URL as an array                    |
+| json()                                   | json           | Returns all parts of the URL as a JSON object               |
+| get(string $key)                         | string or null | Returns the value of a URL part, if it exists               |
+| scheme()                                 | string         | Returns the scheme e.g. http                                |
+| host()                                   | string         | Returns the host e.g example.com                            |
+| port()                                   | string         | Returns the port e.g. 80                                    |
+| user()                                   | string         | Returns the user                                            |
+| pass()                                   | string         | Returns the password                                        |
+| path()                                   | string         | Returns the path e.g. /gallery/houses                       |
+| fileName()                               | string         | Returns the filename e.g. example.pdf                       |
+| query(bool $includeQuestionMark = false) | string         | Returns the querystring e.g. hiRes=1                        |
+| fragment(bool $includeHash = false)      | string         | Returns the fragment e.g forSale                            |
+| segments()                               | array          | Returns each segment of the URL path                        |
+| segment(int $index)                      | string or null | Returns the requested segment of the URL Path, if it exists |
+| encode(int $times = 1)                   | string         | Returns the url encoded (urlencode).                        |
+| doubleEncode()                           | string         | Returns the url double encoded                              |
+| queryArray()                             | array          | Returns the Query String back in an associative array       |
+| fragmentArray()                          | array          | Returns the Fragments back in an associative array          |
+| getQueryValue(string $key)               | string or null | Returns the value of the query string key if it exists      |
+| getHashValue(string $key)                | string or null | Returns the value of the fragment/hash key if it exists     |
