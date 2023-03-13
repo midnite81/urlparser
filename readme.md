@@ -1,7 +1,8 @@
-# Url Parser [![Latest Stable Version](https://poser.pugx.org/midnite81/urlparser/version)](https://packagist.org/packages/midnite81/urlparser) [![Total Downloads](https://poser.pugx.org/midnite81/urlparser/downloads)](https://packagist.org/packages/midnite81/urlparser) [![Latest Unstable Version](https://poser.pugx.org/midnite81/urlparser/v/unstable)](https://packagist.org/packages/midnite81/urlparser) [![License](https://poser.pugx.org/midnite81/urlparser/license.svg)](https://packagist.org/packages/midnite81/urlparser) [![Build](https://travis-ci.org/midnite81/urlparser.svg?branch=master)](https://travis-ci.org/midnite81/urlparser) [![Coverage Status](https://coveralls.io/repos/github/midnite81/urlparser/badge.svg?branch=master)](https://coveralls.io/github/midnite81/urlparser?branch=master)
+# Url Parser 
+[![Latest Stable Version](https://poser.pugx.org/midnite81/urlparser/version)](https://packagist.org/packages/midnite81/urlparser) [![Total Downloads](https://poser.pugx.org/midnite81/urlparser/downloads)](https://packagist.org/packages/midnite81/urlparser) [![Latest Unstable Version](https://poser.pugx.org/midnite81/urlparser/v/unstable)](https://packagist.org/packages/midnite81/urlparser) [![License](https://poser.pugx.org/midnite81/urlparser/license.svg)](https://packagist.org/packages/midnite81/urlparser) [![Build](https://travis-ci.org/midnite81/urlparser.svg?branch=master)](https://travis-ci.org/midnite81/urlparser) [![Coverage Status](https://coveralls.io/repos/github/midnite81/urlparser/badge.svg?branch=master)](https://coveralls.io/github/midnite81/urlparser?branch=master)   
 A PHP 7.1+ URL parser for easy manipulation of URLs
 
-# Installation
+## Installation
 
 This package requires PHP 7.1+.
 
@@ -12,7 +13,7 @@ To install through composer include the package in your `composer.json`.
 Run `composer install` or `composer update` to download the dependencies or you can run 
 `composer require midnite81/urlparser`.
 
-# Example Usage
+## Example Usage
 
 ```php
 <?php 
@@ -25,7 +26,7 @@ echo $url->path(); // returns '/gallery/houses'
 echo $url->fileName() // returns 'houses'
 ```
 
-# Available Methods
+## Available Methods
 
 | Method                                   | Returns        | Description                                                 |
 |:-----------------------------------------|:---------------|:------------------------------------------------------------|
